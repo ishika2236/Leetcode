@@ -1,0 +1,34 @@
+class Solution {
+public:
+    int compress(vector<char>& chars) {
+        int n = chars.size();
+        int i = 0;  // Pointer to iterate through the characters in chars
+        int j = 0;  // Pointer to update the characters in chars
+        
+        while (i < n) {
+            char currentChar = chars[i];
+            int count = 0;  // Count of consecutive repeating characters
+            
+            // Count the number of consecutive repeating characters
+            while (i < n && chars[i] == currentChar) {
+                i++;
+                count++;
+            }
+            
+            // Update the character and count in chars
+            chars[j] = currentChar;
+            j++;
+            
+            if (count > 1) {
+                // If count is greater than 1, update the count in chars
+                string countString = to_string(count);
+                for (char c : countString) {
+                    chars[j] = c;
+                    j++;
+                }
+            }
+        }
+        
+        return j;  // Return the length of the compressed string in chars
+    }
+};
