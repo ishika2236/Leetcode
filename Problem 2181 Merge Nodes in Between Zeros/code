@@ -1,0 +1,38 @@
+class Solution {
+public:
+    ListNode* mergeNodes(ListNode* head) {
+        ListNode* curr = head;
+        ListNode* dummy = new ListNode(0);
+        ListNode* result = dummy;
+
+        bool isFound = false;
+        int sum = 0;
+
+        while (curr != nullptr) {
+            if (curr->val == 0) {
+                if (isFound) {
+                    ListNode* temp = new ListNode(sum);
+                    dummy->next = temp;
+                    dummy = dummy->next;
+                    isFound = false;
+                    sum = 0;
+                }
+            } else {
+                sum += curr->val;
+                isFound = true;
+            }
+
+            curr = curr->next;
+        }
+        
+        if (isFound) {
+            ListNode* temp = new ListNode(sum);
+            dummy->next = temp;
+            dummy = dummy->next;
+        }
+
+        ListNode* finalNode = result->next;
+        delete result;
+        return finalNode;
+    }
+};
