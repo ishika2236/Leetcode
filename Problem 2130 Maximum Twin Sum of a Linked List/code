@@ -1,0 +1,39 @@
+#include <iostream>
+#include <climits>
+
+class Solution {
+public:
+
+
+    int pairSum(ListNode* head) {
+        if (head == nullptr || head->next == nullptr) {
+            return 0;
+        }
+
+        ListNode* temp = head;
+        ListNode* reverse = nullptr;
+
+        while (temp != nullptr) {
+            ListNode* newNode = new ListNode(temp->val);
+            newNode->next = reverse;
+            reverse = newNode;
+            temp = temp->next;
+        }
+
+        int maxsum = INT_MIN;
+        temp = head;
+        ListNode* reverseTemp = reverse;
+
+        while (temp != nullptr && reverseTemp != nullptr) {
+            int sum = temp->val + reverseTemp->val;
+            if (sum > maxsum) {
+                maxsum = sum;
+            }
+
+            temp = temp->next;
+            reverseTemp = reverseTemp->next;
+        }
+
+        return maxsum;
+    }
+};
