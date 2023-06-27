@@ -1,0 +1,25 @@
+//using stacks
+#include<stack>
+class Solution {
+public:
+
+    void reverseString(vector<char>& s) {
+       stack<char>ch;
+       for(int i=0;i<s.size();i++){
+           char letter= s[i];
+           ch.push(letter);
+       }
+       vector<char>ans;
+       for(int i=0;i<s.size();i++){
+           char letter=ch.top();
+           ans.push_back(letter);
+           ch.pop();
+
+       }
+       for(int i=0;i<ans.size();i++){
+           s[i]=ans[i];
+       }
+       
+    }
+
+};

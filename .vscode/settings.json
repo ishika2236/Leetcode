@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "code approach 1": "cpp"
+        "code approach 1": "cpp",
+        "stack": "cpp"
     }
 }
