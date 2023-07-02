@@ -1,0 +1,49 @@
+class Solution {
+public:
+    int minInsertions(string s) {
+    stack<char> ch;
+    int count = 0;
+    int i = 0;
+    while (i < s.length()) {
+        if (s[i] == '(') {
+            ch.push('(');
+            i++;
+        } else if (s[i] == ')') {
+            if (i + 1 < s.length() && s[i + 1] == ')') {
+                // Found '))', skip it
+                if (!ch.empty()) {
+                    ch.pop();
+                } else {
+                    count++;
+                }
+                i += 2;
+            } else {
+                // Found a single ')', needs a corresponding '('
+                if (!ch.empty()) {
+                    ch.pop();
+                } else {
+                    count++;
+                }
+                if (i + 1 < s.length() && s[i + 1] == ')') {
+                    // Found a closing sequence after a single ')'
+                    i++;
+                } else {
+                    // Need to add a closing sequence after a single ')'
+                    count++;
+                }
+                i++;
+            }
+        }
+    }
+
+    // For remaining '(' in the stack, add 2 closing ')' for each
+    count += ch.size() * 2;
+
+    return count;
+
+
+
+
+        
+    }
+}; 

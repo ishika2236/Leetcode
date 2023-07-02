@@ -1,0 +1,24 @@
+#include <vector>
+
+class Solution {
+public:
+    int countStudents(std::vector<int>& students, std::vector<int>& sandwiches) {
+        int count = students.size();
+        int mismatchCount = 0;
+
+        while (!students.empty() && mismatchCount < sandwiches.size()) {
+            if (students.front() == sandwiches.front()) {
+                students.erase(students.begin());
+                sandwiches.erase(sandwiches.begin());
+                count--;
+                mismatchCount = 0;  // Reset the mismatch counter
+            } else {
+                students.push_back(students.front());
+                students.erase(students.begin());
+                mismatchCount++;
+            }
+        }
+        
+        return count;
+    }
+};
