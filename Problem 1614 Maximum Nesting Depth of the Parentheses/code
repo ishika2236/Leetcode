@@ -1,0 +1,27 @@
+#include <stack>
+#include <algorithm>
+
+class Solution {
+public:
+    int maxDepth(string s) {
+        stack<char> ch;
+        int maxDepth = 0;
+        int currentDepth = 0;
+        
+        for (int i = 0; i < s.length(); i++) {
+            char letter = s[i];
+
+            if (letter == '(') {
+                ch.push(letter);
+                currentDepth = max(currentDepth, static_cast<int>(ch.size()));
+            } else if (letter == ')') {
+                if (!ch.empty()) {
+                    ch.pop();
+                }
+            }
+        }
+        
+        maxDepth = max(currentDepth, static_cast<int>(ch.size()));
+        return maxDepth;
+    }
+};

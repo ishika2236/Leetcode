@@ -1,0 +1,38 @@
+#include <string>
+#include <stack>
+
+class Solution {
+public:
+    string minRemoveToMakeValid(std::string s) {
+        stack<int> st;
+        string modified = s;
+        int openCount = 0;
+
+        // Remove excess closing parentheses
+        for (int i = 0; i < modified.length(); i++) {
+            if (modified[i] == '(') {
+                st.push(i);
+                openCount++;
+            } else if (modified[i] == ')') {
+                if (!st.empty()) {
+                    st.pop();
+                    openCount--;
+                } else {
+                    modified[i] = '*'; // Mark excess closing parentheses with '*'
+                }
+            }
+        }
+
+        // Remove remaining unmatched opening parentheses
+        while (!st.empty()) {
+            modified[st.top()] = '*'; // Mark unmatched opening parentheses with '*'
+            st.pop();
+            openCount--;
+        }
+
+        // Remove '*' characters from the modified string
+        modified.erase(remove(modified.begin(), modified.end(), '*'), modified.end());
+
+        return modified;
+    }
+};
