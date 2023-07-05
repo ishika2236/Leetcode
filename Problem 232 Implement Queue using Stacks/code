@@ -1,0 +1,41 @@
+#include <stack>
+
+class MyQueue {
+    stack<int> s;
+    
+public:
+    MyQueue() {
+        // No need to initialize anything here
+    }
+    
+    void push(int x) {
+        if (s.empty()) {
+            s.push(x);
+        } else {
+            std::stack<int> tempStack;
+            while (!s.empty()) {
+                tempStack.push(s.top());
+                s.pop();
+            }
+            s.push(x);
+            while (!tempStack.empty()) {
+                s.push(tempStack.top());
+                tempStack.pop();
+            }
+        }
+    }
+    
+    int pop() {
+        int ele = s.top();
+        s.pop();
+        return ele;
+    }
+    
+    int peek() {
+        return s.top();
+    }
+    
+    bool empty() {
+        return s.empty();
+    }
+};

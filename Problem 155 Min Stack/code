@@ -1,0 +1,33 @@
+class MinStack {
+private:
+    int arr[100000];
+    int Top;
+    int size;
+
+public:
+    MinStack() {
+        Top = 0;
+        size = 0;
+    }
+    
+    void push(int val) {
+        arr[Top] = val;
+        Top++;
+    }
+    
+    void pop() {
+        Top--;
+    }
+    
+    int top() {
+        return arr[Top - 1];
+    }
+    
+    int getMin() {
+        int minimum = arr[0];
+        for (int i = 1; i < Top; i++) {
+            minimum = min(minimum, arr[i]);
+        }
+        return minimum;
+    }
+};
