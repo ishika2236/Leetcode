@@ -1,0 +1,109 @@
+#include <stack>
+
+class FrontMiddleBackQueue {
+    std::stack<int> s;
+    std::stack<int> st;
+
+public:
+    FrontMiddleBackQueue() {}
+
+    void pushFront(int val) {
+        s.push(val);
+    }
+
+    void pushMiddle(int val) {
+        int count = s.size();
+
+        for (int i = 0; i < count / 2; i++) {
+            int ele = s.top();
+            s.pop();
+            st.push(ele);
+        }
+
+        s.push(val);
+
+        while (!st.empty()) {
+            int ele = st.top();
+            st.pop();
+            s.push(ele);
+        }
+    }
+
+    void pushBack(int val) {
+        while (!s.empty()) {
+            int ele = s.top();
+            s.pop();
+            st.push(ele);}
+
+        s.push(val);
+        
+
+        while (!st.empty()) {
+            int ele = st.top();
+            st.pop();
+            s.push(ele);
+        }
+    }
+
+    int popFront() {
+        if (s.empty()) {
+            return -1; // or any other appropriate error code/behavior
+        }
+
+        int ele = s.top();
+        s.pop();
+        return ele;
+    }
+
+    int popMiddle() {
+    if (s.empty()) {
+        return -1; // or any other appropriate error code/behavior
+    }
+
+    int count = s.size();
+    int mid = (count - 1) / 2;
+
+    for (int i = 0; i < mid; i++) {
+        int ele = s.top();
+        s.pop();
+        st.push(ele);
+    }
+
+    int middleElement = s.top();
+    s.pop();
+
+    while (!st.empty()) {
+        int ele = st.top();
+        st.pop();
+        s.push(ele);
+    }
+
+    return middleElement;
+}
+
+
+    int popBack() {
+        if (s.empty()) {
+            return -1; // or any other appropriate error code/behavior
+        }
+
+        std::stack<int> st;
+
+        while (s.size() > 1) {
+            int ele = s.top();
+            s.pop();
+            st.push(ele);
+        }
+
+        int ele = s.top();
+        s.pop();
+
+        while (!st.empty()) {
+            int ele = st.top();
+            st.pop();
+            s.push(ele);
+        }
+
+        return ele;
+    }
+};
