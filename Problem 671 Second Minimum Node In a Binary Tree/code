@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int findSecondMinimumValue(TreeNode* root) {
+        if (root == nullptr) {
+            return -1;
+        }
+
+        int firstmin = root->val;
+        int secondmin = -1;
+
+        inorderTraversal(root, firstmin, secondmin);
+
+        return secondmin;
+    }
+
+    void inorderTraversal(TreeNode* root, int& firstmin, int& secondmin) {
+        if (root == nullptr) {
+            return;
+        }
+
+        // Update secondmin based on the current node's value.
+        if (root->val != firstmin) {
+            if (secondmin == -1 || root->val < secondmin) {
+                secondmin = root->val;
+            }
+        }
+
+        inorderTraversal(root->left, firstmin, secondmin);
+        inorderTraversal(root->right, firstmin, secondmin);
+    }
+};

@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> inorderTraversal(TreeNode* root) {
+        vector<int> v;
+
+        if (root == nullptr) {
+            return v;
+        }
+
+        // Traverse the left subtree
+        vector<int> left = inorderTraversal(root->left);
+        v.insert(v.end(), left.begin(), left.end());
+
+        // Add the current node value
+        v.push_back(root->val);
+
+        // Traverse the right subtree
+        vector<int> right = inorderTraversal(root->right);
+        v.insert(v.end(), right.begin(), right.end());
+
+        return v;
+    }
+};
