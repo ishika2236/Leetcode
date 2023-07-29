@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int missingNumber(vector<int>& nums) {
+        unordered_set<int>s;
+        int max= INT_MIN;
+        for(int i=0;i<nums.size();i++){
+            s.insert(nums[i]);
+            if(nums[i]>max){
+                max=nums[i];
+            }
+        }
+        for(int i=0;i<=max+1;i++){
+            if(s.count(i)==0){
+                return i;
+                
+            }
+        }
+        return -1;
+    
+        
+    }
+};

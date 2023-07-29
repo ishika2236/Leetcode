@@ -1,0 +1,49 @@
+class Solution {
+public:
+    vector<vector<int>> findPrimePairs(int n) {
+        vector<vector<int>>final;
+
+        int i=1;
+        vector<int>v;
+        
+        vector<bool> is_prime(n+1, true);
+
+
+       //sieve of eratosthenes theorem
+        is_prime[0] = is_prime[1] = false;
+        for (int i = 2; i * i <= n; i++) {
+            if (is_prime[i]) {
+                for (int j = i * i; j <= n; j += i) {
+                    is_prime[j] = false;
+                }
+            }
+        }
+        
+        for (int i = 2; i <= n; i++) {
+            if (is_prime[i]) {
+                v.push_back(i);
+            }
+        }
+
+        int left = 0;
+        int right = v.size() - 1;
+        while (left <= right) {
+            int sum = v[left] + v[right];
+            if (sum == n) {
+                vector<int> ans;
+                ans.push_back(v[left]);
+                ans.push_back(v[right]);
+                final.push_back(ans);
+                left++;
+                right--;
+            } else if (sum < n) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+        return final;
+        
+        
+    }
+};
