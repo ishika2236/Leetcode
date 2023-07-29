@@ -1,0 +1,40 @@
+struct info {
+    int maxi;
+    int mini;
+    bool isbst;
+    int size;
+    int sum;
+};
+
+class Solution {
+public:
+    int maxSumBST(TreeNode* root) {
+        int maxsum = 0;
+        solve(root, maxsum);
+        return maxsum;
+    }
+
+private:
+    info solve(TreeNode* root, int& maxsum) {
+        if (root == nullptr) {
+            return {INT_MIN, INT_MAX, true, 0, 0};
+        }
+        info left = solve(root->left, maxsum);
+        info right = solve(root->right, maxsum);
+
+        info curr;
+        curr.size = left.size + right.size + 1;
+        curr.sum = left.sum + right.sum + root->val;
+        curr.maxi = max(root->val, right.maxi);
+        curr.mini = min(root->val, left.mini);
+
+        if (left.isbst && right.isbst && (root->val > left.maxi && root->val < right.mini)) {
+            curr.isbst = true;
+            maxsum = max(maxsum, curr.sum);
+        } else {
+            curr.isbst = false;
+        }
+
+        return curr;
+    }
+};
