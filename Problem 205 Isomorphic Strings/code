@@ -1,0 +1,30 @@
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) {
+        unordered_map<char, char> m;
+        unordered_set<char> mappedChars;
+
+        if (s.length() != t.length()) {
+            return false;
+        }
+
+        for (int i = 0; i < s.length(); i++) {
+            char sChar = s[i];
+            char tChar = t[i];
+
+            if (m.count(sChar)) {
+                if (m[sChar] != tChar) {
+                    return false;
+                }
+            } else {
+                if (mappedChars.count(tChar)) {
+                    return false;
+                }
+                m[sChar] = tChar;
+                mappedChars.insert(tChar);
+            }
+        }
+
+        return true;
+    }
+};
