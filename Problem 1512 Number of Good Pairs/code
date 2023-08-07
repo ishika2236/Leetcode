@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int numIdenticalPairs(vector<int>& nums) {
+        vector<vector<int>>ans;
+        
+        int left=0;
+        int right=nums.size()-1;
+        while(left<right){
+            vector<int>v;
+            if(nums[left]==nums[right]){
+                v.push_back(left);
+                v.push_back(right);
+                ans.push_back(v);
+               
+
+            }
+            
+            if(right==left+1){
+                left++;
+                right=nums.size()-1;
+            }
+            else{
+                right--;
+            }
+
+            
+        }
+        return ans.size();
+
+        
+    }
+};

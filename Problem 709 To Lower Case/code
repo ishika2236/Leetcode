@@ -1,0 +1,14 @@
+#include <cctype>
+
+class Solution {
+public:
+    string toLowerCase(string s) {
+        for (int i = 0; i < s.length(); i++) {
+            char st = s[i];
+            if (isupper(st)) {
+                s[i] = tolower(st);
+            }
+        }
+        return s;
+    }
+};

@@ -1,0 +1,115 @@
+class Solution {
+public:
+    string intToRoman(int num) {
+        string s;
+        if(num/1000 >0){
+            int temp=num;
+            temp=temp/1000;
+            num=num%1000;
+            for(int i=0;i<temp;i++){
+                s+= "M";
+            }
+            
+        }
+        if(num/500 >0){
+
+            if(num>=900){
+                s+= "CM";
+                num=num%900;
+
+            }
+            else{
+                int temp=num;
+                temp=temp/500;
+                num=num%500;
+                for(int i=0;i<temp;i++){
+                    s+= "D";
+                }
+            }
+            
+        }
+        if(num/100 >0){
+            if(num>=400){
+                s+="CD";
+                num=num%400;
+            }
+            else{
+                int temp=num;
+                temp=temp/100;
+                num=num%100;
+                for(int i=0;i<temp;i++){
+                    s+= "C";
+                }
+            }
+            
+        }
+        if(num/50 >0){
+            if(num>=90){
+                s+= "XC";
+                num=num%90;
+
+            }
+            else{
+                int temp=num;
+                temp=temp/50;
+                num=num%50;
+                for(int i=0;i<temp;i++){
+                    s+= "L";
+                }
+            }
+            
+        }
+        if(num/10 >0){
+            if(num>=40){
+                s+= "XL";
+                num=num%40;
+
+            }
+            
+            
+            else{
+                int temp=num;
+                temp=temp/10;
+                num=num%10;
+                for(int i=0;i<temp;i++){
+                    s+= "X";
+                }
+            }
+            
+        }
+        if(num/5 >0){
+            if(num>=9){
+                s+= "IX";
+                num=num%9;
+
+            }
+            else {
+                int temp=num;
+                temp=temp/5;
+                num=num%5;
+                for(int i=0;i<temp;i++){
+                    s+= "V";
+                }
+            }
+            
+        }
+        if(num/1 >0){
+            if(num>=4){
+                s+= "IV";
+                num=num%4;
+
+            }
+            else{
+                int temp=num;
+                temp=temp/1;
+                num=num%1;
+                for(int i=0;i<temp;i++){
+                    s+= "I";
+                }
+            }
+            
+        }
+        return s;
+        
+    }
+};
