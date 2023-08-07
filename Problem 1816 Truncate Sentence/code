@@ -1,0 +1,22 @@
+#include <string>
+
+class Solution {
+public:
+    string truncateSentence(string s, int k) {
+        string word;
+        int count = 0;
+
+        for (char i : s) {
+            if (i != ' ') {
+                word += i;
+            } else {
+                count++;
+                if (count == k) {
+                    break;
+                }
+                word += ' ';
+            }
+        }
+        return word;
+    }
+};
