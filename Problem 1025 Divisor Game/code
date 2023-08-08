@@ -1,0 +1,22 @@
+class Solution {
+public:
+    bool divisorGame(int n) {
+        bool alice=true;
+        while(n>1){
+            bool founddivisor=false;
+            for(int i=1;i<n;i++){
+                if(n%i==0){
+                    n=n-i;
+                    founddivisor=true;
+                    break;
+                }
+            }
+            if(!founddivisor){
+                break;
+            }
+            alice=!alice;
+        }
+        return !alice;
+        
+    }
+};

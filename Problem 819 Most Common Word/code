@@ -1,0 +1,38 @@
+class Solution {
+public:
+    string mostCommonWord(string paragraph, vector<string>& banned) {
+        unordered_set<string> bannedSet(banned.begin(), banned.end());
+        unordered_map<string, int> mapping;
+
+        transform(paragraph.begin(), paragraph.end(), paragraph.begin(), ::tolower);
+        string word;
+
+        for (int i = 0; i < paragraph.size(); ) {
+            if (isalpha(paragraph[i])) {
+                word = "";
+                while (i < paragraph.size() && isalpha(paragraph[i])) {
+                    word += paragraph[i];
+                    i++;
+                }
+
+                if (bannedSet.find(word) == bannedSet.end()) {
+                    mapping[word]++;
+                }
+            } else {
+                i++;
+            }
+        }
+
+        string maxword;
+        int maxnum = 0;
+
+        for (const auto& i : mapping) {
+            if (i.second > maxnum) {
+                maxnum = i.second;
+                maxword = i.first;
+            }
+        }
+
+        return maxword;
+    }
+};
