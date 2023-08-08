@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int numUniqueEmails(vector<string>& emails) {
+        
+        unordered_set<string> s;
+       
+        for(const string& email:emails){
+            string processed="";
+            bool ignore=false;
+            for(char ch:email){
+                if(ch=='@'){
+                    processed += email.substr(email.find('@'));
+                    break;
+                }
+                else if(ch=='+'){
+                    ignore=true;
+                }
+                else if(ch!='.' && !ignore){
+                    processed+=ch;
+                }
+
+            }
+            s.insert(processed);
+        }
+        return s.size();
+        
+    }
+};

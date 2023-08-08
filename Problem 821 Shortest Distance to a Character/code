@@ -1,0 +1,24 @@
+class Solution {
+public:
+    vector<int> shortestToChar(string s, char c) {
+        vector<int>ans;
+        vector<int>v;
+        for(int i=0;i<s.length();i++){
+            if(s[i]==c){
+                v.push_back(i);
+            }
+        }
+        for(int i=0;i<s.length();i++){
+            int mindiff=INT_MAX;
+            for(int j=0;j<v.size();j++){
+                int min= abs(i-v[j]);
+                if(min<mindiff){
+                    mindiff=min;
+                }
+                
+            }
+            ans.push_back(mindiff);
+        }
+        return ans;
+    }
+};
