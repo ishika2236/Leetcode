@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int canBeTypedWords(string text, string brokenLetters) {
+        int count = 0;
+        bool isWordTypable = true;
+
+        for (char c : text) {
+            if (c == ' ') {
+                if (isWordTypable) {
+                    count++;
+                }
+                isWordTypable = true;
+            } else if (brokenLetters.find(c) != string::npos) {
+                isWordTypable = false;
+            }
+        }
+
+        if (isWordTypable) {
+            count++;
+        }
+
+        return count;
+    }
+};

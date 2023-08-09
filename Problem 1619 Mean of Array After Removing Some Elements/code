@@ -1,0 +1,18 @@
+class Solution {
+public:
+    double trimMean(vector<int>& arr) {
+        sort(arr.begin(), arr.end());  
+
+        int n = arr.size();
+        int trimSize = n / 20;  
+
+        int sum = 0;
+        for (int i = trimSize; i < n - trimSize; i++) {
+            sum += arr[i];
+        }
+
+        double average = static_cast<double>(sum) / (n - 2 * trimSize); 
+
+        return average;
+    }
+};
