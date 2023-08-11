@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int maximum69Number(int num) {
+        int original = num;
+        int position = 1;
+        int maxNum = num;
+
+        while (num > 0) {
+            if (num % 10 == 6) {
+                maxNum = original + 3 * position;
+            }
+            num /= 10;
+            position *= 10;
+        }
+
+        return maxNum;
+    }
+};
