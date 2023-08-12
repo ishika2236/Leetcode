@@ -1,0 +1,16 @@
+class Solution {
+public:
+    string replaceDigits(string s) {
+        string st = "";
+        for (int i = 0; i < s.length(); i++) {
+            if (i % 2 == 0) {
+                st += s[i];
+            } else {
+                int num = s[i] - '0'; 
+                char ch = st[st.length() - 1] + num; 
+                st += ch;
+            }
+        }
+        return st;
+    }
+};
