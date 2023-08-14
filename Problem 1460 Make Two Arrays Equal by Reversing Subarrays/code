@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool canBeEqual(vector<int>& target, vector<int>& arr) {
+        int left=0;
+        int right;
+        int query;
+        for(int i=0;i<target.size();i++){
+            left=i;
+            query=target[i];
+            for(int j=0;j<arr.size();j++){
+                if(arr[j]==query){
+                    right=j;
+                }
+            }
+            if(left!=right){
+                reverse(arr.begin()+left, arr.begin()+right+1);
+            }
+
+        }
+        for(int i=0;i<target.size();i++){
+            if(arr[i]!=target[i]){
+                return false;
+            }
+        }
+        return true;
+        
+    }
+};

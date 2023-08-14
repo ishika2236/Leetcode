@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<int> minSubsequence(vector<int>& nums) {
+        int totalSum = 0;
+        for (int num : nums) {
+            totalSum += num;
+        }
+        
+        sort(nums.rbegin(), nums.rend()); // Sort in non-increasing order
+        
+        int subsequenceSum = 0;
+        vector<int> result;
+        
+        for (int num : nums) {
+            result.push_back(num);
+            subsequenceSum += num;
+            
+            if (subsequenceSum > totalSum - subsequenceSum) {
+                return result;
+            }
+        }
+        
+        return result;
+    }
+};
