@@ -1,0 +1,45 @@
+class Solution {
+public:
+    vector<int> twoOutOfThree(vector<int>& nums1, vector<int>& nums2, vector<int>& nums3) {
+        unordered_set<int>set1;
+        unordered_set<int>set2;
+        unordered_set<int>set3;
+        unordered_map<int,int>s;
+
+        for(int i=0;i<nums1.size();i++){
+            set1.insert(nums1[i]);
+        }
+        for(int i=0;i<nums2.size();i++){
+            set2.insert(nums2[i]);
+        }
+        for(int i=0;i<nums3.size();i++){
+            set3.insert(nums3[i]);
+        }
+        for(auto set:set1){
+            s[set]++;
+
+        }
+        for(auto set:set2){
+            s[set]++;
+
+        }
+        for(auto set:set3){
+            s[set]++;
+
+        }
+        vector<int>ans;
+        for(auto map:s){
+            if(map.second>=2){
+                ans.push_back(map.first);
+            }
+        }
+        return ans;
+        
+
+
+
+
+
+        
+    }
+};
