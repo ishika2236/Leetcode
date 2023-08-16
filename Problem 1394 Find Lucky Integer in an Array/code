@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int findLucky(vector<int>& arr) {
+        unordered_map<int,int>mapp;
+        for(int i=0;i<arr.size();i++){
+            mapp[arr[i]]++;
+        }
+        vector<int>ans;
+        for(auto map:mapp){
+            if(map.first==map.second){
+                ans.push_back(map.first);
+            }
+        }
+        int n=ans.size();
+        sort(ans.begin(),ans.end());
+        if(!ans.empty()){
+            return ans[n-1];
+        }
+        return -1;
+        
+    }
+};
