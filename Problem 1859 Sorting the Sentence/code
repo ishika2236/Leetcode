@@ -1,0 +1,36 @@
+class Solution {
+public:
+    string sortSentence(string s) {
+        unordered_map<int, string> mapping;
+        vector<string> temp;
+        string st = "";
+
+        for (int i = 0; i < s.length(); i++) {
+            if (s[i] != ' ') {
+                st += s[i];
+            } else {
+                temp.push_back(st);
+                st = "";
+            }
+        }
+        
+        temp.push_back(st);
+
+        for (int i = 0; i < temp.size(); i++) {
+            int n = temp[i].size();
+            int num = temp[i][n - 1] - '0'; 
+            string tomap = temp[i].substr(0, n - 1);
+            mapping[num] = tomap;
+        }
+        
+        string ans = "";
+        for (int i = 1; i <= mapping.size(); i++) {
+            ans += mapping[i];
+            if (i != mapping.size()) {
+                ans += ' ';
+            }
+        }
+        
+        return ans;
+    }
+};
