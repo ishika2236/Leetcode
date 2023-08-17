@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int countAsterisks(string s) {
+        bool flag=false;
+        int count=0;
+        int sol=0;
+
+        for(int i=0;i<s.length();i++){
+            char ele=s[i];
+            if(ele=='|'){
+                count++;
+            }
+            if(count%2==0){
+                flag=true;
+            }
+            else{
+                flag=false;
+            }
+            if(flag==true && ele=='*'){
+                sol++;
+
+            }
+
+        }
+        return sol;
+    }
+};

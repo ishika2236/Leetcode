@@ -1,0 +1,14 @@
+class Solution {
+public:
+    int findDelayedArrivalTime(int arrivalTime, int delayedTime) {
+        int temp;
+        temp=arrivalTime+delayedTime;
+        if(temp<24){
+            return temp;
+        }
+        else{
+            return temp-24;
+        }
+        
+    }
+};
