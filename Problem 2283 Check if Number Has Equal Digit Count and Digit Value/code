@@ -1,0 +1,20 @@
+class Solution {
+public:
+    bool digitCount(string num) {
+        unordered_map<int, int> map;
+        
+        for (int i = 0; i < num.length(); i++) {
+            int ele = num[i] - '0'; 
+            map[ele]++;
+        }
+        
+        for (int i = 0; i < num.length(); i++) {
+            int ele = num[i] - '0'; 
+            if (ele != map[i]) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+};

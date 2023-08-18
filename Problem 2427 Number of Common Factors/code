@@ -1,0 +1,32 @@
+class Solution {
+public:
+    int commonFactors(int a, int b) {
+        if(a==0 ||b==0){
+            return 0;
+        }
+        unordered_set<int>a1;
+        int count=1;
+        unordered_set<int>b1;
+
+        for(int i=2;i<=a;i++){
+            if(a%i==0){
+                a1.insert(i);
+            }
+        }
+        for(int i=2;i<=b;i++){
+            if(b%i==0){
+                b1.insert(i);
+            }
+        }
+        for(auto  i:a1){
+            if(b1.count(i)>0){
+                count++;
+            }
+
+        }
+        return count;
+
+
+        
+    }
+};
