@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int specialArray(vector<int>& nums) {
+        int i=1;
+        unordered_map<int,int>map;
+        while(i<=nums.size()){
+            int count=0;
+            for(auto num:nums){if(num>=i){
+                count++;
+            }}
+            map[i]=count;
+           
+            if(i==map[i]){
+            return i;
+            
+            }
+        i++;
+            
+        }
+        return -1;
+        
+
+        
+    }
+};

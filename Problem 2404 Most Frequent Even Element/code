@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int mostFrequentEven(vector<int>& nums) {
+        unordered_map<int,int>map;
+        for(int i=0;i<nums.size();i++){
+            int ele=nums[i];
+            if(ele%2==0){
+                map[ele]++;
+            }
+        }
+        int maxele=-1;
+        int maxind=0;
+    
+        vector<int>v;
+        for(auto m:map){
+            v.push_back(m.first);
+        }
+        sort(v.begin(),v.end());
+        for(auto m:v){
+            
+            if(maxind<map[m]){
+                maxele=m;
+                maxind=map[m];
+            }
+        }
+        return maxele;
+
+
+        
+    }
+};

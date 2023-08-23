@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> distinctDifferenceArray(vector<int>& nums) {
+        set<int>leftset;
+        set<int>rightset;
+        vector<int>diff;
+        for(int i=0;i<nums.size();i++){
+            for(int j=0;j<=i;j++){
+                leftset.insert(nums[j]);
+            }
+            for(int k=i+1;k<nums.size();k++){
+                rightset.insert(nums[k]);
+
+            }
+            int d= leftset.size()-rightset.size();
+            diff.push_back(d);
+            leftset.clear();
+            rightset.clear();
+        }
+        return diff;
+        
+    }
+};

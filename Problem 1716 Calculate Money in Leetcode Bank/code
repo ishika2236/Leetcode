@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int totalMoney(int n) {
+        int monadd=0;
+        int money=0;
+        int amount=0;
+        for(int i=1;i<=n;i++){
+            if((i-1)%7==0){
+                monadd++;
+                money+=monadd;
+                amount=monadd;
+            }
+            else{
+                amount++;
+                money+=amount;
+            }
+
+
+        }
+        return money;
+        
+    }
+};

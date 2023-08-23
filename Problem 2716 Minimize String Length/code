@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int minimizedStringLength(string s) {
+        string temp=s;
+        // int size=s.length();
+        // int i=0;
+        // while(i<size-1){
+        //     if(s[i]==s[i+1]){
+        //         s.erase(i,1);
+        //         size--;
+        //     }
+        //     else{
+        //         i++;
+        //     }
+        // }
+        // return s.length();
+        set<char>st;
+        for(int i=0;i<s.length();i++){
+            char ele=s[i];
+            st.insert(ele);
+
+        }
+        return st.size();
+        
+    }
+};
