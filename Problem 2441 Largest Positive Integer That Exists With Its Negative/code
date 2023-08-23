@@ -1,0 +1,18 @@
+class Solution {
+public:
+    int findMaxK(vector<int>& nums) {
+        int ans=-1;
+        for(int i=0;i<nums.size();i++){
+            int ele=-nums[i];
+            int ele2=nums[i];
+            auto it= find(nums.begin(),nums.end(),ele);
+            auto it1=find(nums.begin(),nums.end(),ele2);
+            if(it!=nums.end() && it1 != nums.end()){
+                ans=max(ans,abs(nums[i]));
+
+            }
+        }
+        return ans;
+        
+    }
+};

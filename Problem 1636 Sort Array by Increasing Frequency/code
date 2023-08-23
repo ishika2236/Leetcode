@@ -1,0 +1,30 @@
+class Solution {
+public:
+    vector<int> frequencySort(vector<int>& nums) {
+        unordered_map<int, int> mapping;
+        for (auto num : nums) {
+            mapping[num]++;
+        }
+        
+        vector<int> ans;
+        vector<pair<int, int>> freqp;
+        
+        for (auto map : mapping) {
+            freqp.push_back(make_pair(map.second, map.first));
+        }
+        
+        sort(freqp.begin(), freqp.end(), [](const pair<int, int>& a, const pair<int, int>& b) {
+            if (a.first == b.first) {
+                return a.second > b.second;  
+            }
+            return a.first < b.first;
+        });
+        
+        for (auto temp : freqp) {
+            for (int i = 0; i < temp.first; i++) {
+                ans.push_back(temp.second);
+            }
+        }
+        return ans;
+    }
+};

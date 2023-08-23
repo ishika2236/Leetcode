@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<string> stringMatching(vector<string>& words) {
+        vector<string>v;
+        unordered_set<string>s;
+        for(int i=0;i<words.size();i++){
+            string ch=words[i];
+            for(int j=0;j<words.size();j++){
+                string ele=words[j];
+                if(i!=j){
+                    if(ele.find(ch)!=string::npos){
+                        s.insert(ch);
+                    }
+                }
+
+            }
+
+        }
+        for(auto i:s){
+            v.push_back(i);
+        }
+        return v;
+        
+    }
+};

@@ -1,0 +1,21 @@
+class Solution {
+public:
+    string removeTrailingZeros(string num) {
+        int l=num.length();
+        // long long n=stoll(num);
+        // while(n%10==0){
+        //     n=n/10;
+        // }
+        // return to_string(n);
+        int count=0;
+        for(int i=l-1;i>0;i--){
+            if(num[i]!='0'){
+                break;
+            }
+            else{count++;}
+        }
+        string n=num.substr(0,l-count);
+        return n;
+        
+    }
+};

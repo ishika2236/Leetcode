@@ -1,0 +1,58 @@
+class Solution {
+public:
+    string reorderSpaces(string text) {
+        if(text.length()<=1){
+            return text;
+        }
+        vector<string>words;
+        string word="";
+        int count=0;
+        for(int i=0;i<text.length();i++){
+            char ele=text[i];
+            if(ele!=' '){
+                word+=ele;
+
+            }else{
+                count++;
+                if(word!=" " && word!=""){words.push_back(word);}
+                word="";
+            }
+
+        }
+        if(word!=" " && word!=""){words.push_back(word);}
+        
+        string ans="";
+        int num;
+        if(words.size()>=2){
+            num=count/(words.size()-1);
+
+        }
+        else{
+            num=count;
+        }
+        
+        for(int i=0;i<words.size();i++){
+            ans+=words[i];
+            if(i<words.size()-1){
+                for(int j=0;j<num;j++){
+                ans+=' ';
+                
+                }
+                count=count-num;
+            
+
+            }
+            
+            
+            
+        }
+        while(count>0){
+            count--;
+            ans+=' ';
+            
+        }
+        return ans ;
+
+        
+    }
+};

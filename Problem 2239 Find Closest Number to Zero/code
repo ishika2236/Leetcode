@@ -1,0 +1,10 @@
+class Solution {
+public:
+    int findClosestNumber(vector<int>& nums) {
+        sort(nums.begin(), nums.end(), [](int a, int b) {
+            return abs(a) != abs(b) ? abs(a) < abs(b) : a > b;
+        });
+        
+        return nums[0];
+    }
+};

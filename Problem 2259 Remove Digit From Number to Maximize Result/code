@@ -1,0 +1,26 @@
+class Solution {
+public:
+     string removeDigit(string number, char digit) {
+        vector<int> v;
+        for (int i = 0; i < number.length(); i++) {
+            if (number[i] == digit) {
+                v.push_back(i);
+            }
+        }
+
+        vector<string> ans; // Store modified strings
+        for (int i = 0; i < v.size(); i++) {
+            string temp = number;
+            temp.erase(v[i], 1);
+            ans.push_back(temp);
+        }
+
+        string maxStr = "";
+        for (int i = 0; i < ans.size(); i++) {
+            if (ans[i] > maxStr) {
+                maxStr = ans[i];
+            }
+        }
+         return maxStr;
+    }
+};

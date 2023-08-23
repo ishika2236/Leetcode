@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int vowelStrings(vector<string>& words, int left, int right) {
+        int count=0;
+        for(int i=left;i<=right;i++){
+            string s=words[i];
+            char l=s[0];
+            char r=s[s.length()-1];
+            if((l=='a' || l=='o' || l=='u' || l=='i' ||  l=='e' || l=='A' || l=='E' || l=='I' || l=='O' || l=='U') && (r=='a' || r=='o' || r=='u' || r=='i' ||  r=='e' || r=='A' || r=='E' || r=='I' || r=='O' || r=='U')){
+                count++;
+            }
+        }
+        return count;
+        
+    }
+};
