@@ -1,0 +1,42 @@
+class Solution {
+public:
+    string shortestCompletingWord(string licensePlate, vector<string>& words) {
+        unordered_map<char,int>mapp;
+        vector<string>v;
+        for(int i=0;i<licensePlate.length();i++){
+            char ele=licensePlate[i];
+            if(ele<='Z' && ele>='A' ){
+                ele+=32;
+                mapp[ele]++;
+            }
+            else if(ele<='z'&& ele>='a'){
+                mapp[ele]++;
+            }
+        }
+        string ans;
+        int minSize=INT_MAX;
+        for (string word : words) {
+            unordered_map<char, int> mapp2;
+            
+            for (char c : word) {
+                mapp2[c]++;
+            }
+            
+            bool flag = true;
+            
+            for (auto it : mapp) {
+                if (mapp2[it.first] < it.second) {
+                    flag = false;
+                    break;
+                }
+            }
+            
+            if (flag && word.length() < minSize) {
+                ans = word;
+                minSize = word.length();
+            }
+        }
+        
+        return ans;
+    }
+};

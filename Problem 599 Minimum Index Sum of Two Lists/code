@@ -1,0 +1,33 @@
+class Solution {
+public:
+    vector<string> findRestaurant(vector<string>& list1, vector<string>& list2) {
+        unordered_set<string> st;
+        for (const auto& i : list1) {
+            st.insert(i);
+        }
+        for (const auto& i : list2) {
+            st.insert(i);
+        }
+        
+        int minSumIndex = INT_MAX;
+        vector<string> result;
+
+        for (const auto& i : st) {
+            auto indI = find(list1.begin(), list1.end(), i);
+            auto indJ = find(list2.begin(), list2.end(), i);
+
+            if (indI != list1.end() && indJ != list2.end()) {
+                int sumIndex = distance(list1.begin(), indI) + distance(list2.begin(), indJ);
+                if (sumIndex < minSumIndex) {
+                    minSumIndex = sumIndex;
+                    result.clear();
+                    result.push_back(*indI);
+                } else if (sumIndex == minSumIndex) {
+                    result.push_back(*indI);
+                }
+            }
+        }
+
+        return result;
+    }
+};

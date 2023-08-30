@@ -1,0 +1,35 @@
+class Solution {
+public:
+    int similarPairs(vector<string>& words) {
+        int count=0;
+        int left=0;
+        int right=words.size()-1;
+        unordered_set<char>a;
+        unordered_set<char>b;
+
+        for(int i=0;i<words.size();i++){
+            for(int k=0;k<words[i].size();k++){
+                a.insert(words[i][k]);
+            }
+            
+            for(int j=i+1;j<words.size();j++){
+                for(int l=0;l<words[j].size();l++){
+                    b.insert(words[j][l]);
+                }
+                bool flag=true;
+                for(auto i:a){
+                    if(b.count(i)<1 || a.size()!=b.size()){
+                        flag=false;
+                    }
+                }
+                if(flag){
+                    count++;
+                }
+                b.clear(); 
+            }
+            a.clear();
+        }
+        return count;
+        
+    }
+};

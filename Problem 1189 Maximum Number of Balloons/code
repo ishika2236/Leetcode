@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int maxNumberOfBalloons(string text) {
+        unordered_map<char, int> mapp;
+        for (char ele : text) {
+            mapp[ele]++;
+        }
+
+        int count = INT_MAX; 
+        string balloon = "balloon";
+        
+        
+        for (char c : balloon) {
+            if (c == 'l' || c == 'o') {
+                count = min(count, mapp[c] / 2);
+            } else {
+                count = min(count, mapp[c]);
+            }
+        }
+        
+        return count;
+    }
+};

@@ -1,0 +1,31 @@
+class Solution {
+public:
+    int minNumber(vector<int>& nums1, vector<int>& nums2) {
+        int min1=INT_MAX;
+        int min2=INT_MAX;
+        unordered_set<int>s;
+        vector<int>v;
+
+        for(int i=0;i<nums1.size();i++){
+            min1=min(min1,nums1[i]);
+            s.insert(nums1[i]);
+        }
+        for(int i=0;i<nums2.size();i++){
+            min2=min(min2,nums2[i]);
+            if(s.count(nums2[i])>0){
+                v.push_back(nums2[i]);
+            }
+        }
+        sort(v.begin(),v.end());
+        if(v.size()>0){return v[0];}
+        
+        else if(min1<min2){
+            min1*=10;
+            return min1+min2;
+        }
+        else{
+            min2*=10;
+            return min2+min1;
+        }
+    }
+};

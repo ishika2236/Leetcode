@@ -1,0 +1,33 @@
+class Solution {
+public:
+    bool isFascinating(int n) {
+        int ele1= 2*n;
+        int ele2= 3*n;
+        string s1= to_string(n);
+        string s2=to_string(ele1);
+        string s3=to_string(ele2);
+        string ans=s1+s2+s3;
+        long long sol=stoll(ans);
+        unordered_map<int,int>mapp;
+        unordered_set<int>set;
+        cout<<sol<<endl;
+        while(sol>0){
+            int digit=sol%10;
+            sol/=10;
+            mapp[digit]++;
+            set.insert(digit);
+        }
+        for(int i=1;i<=9;i++){
+            if(set.count(i)<1){
+                return false;
+            }
+        }
+        for(auto it:mapp){
+            if(it.second!=1){
+                return false;
+            }
+
+        }
+        return true;
+    }
+};

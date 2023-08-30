@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool checkAlmostEquivalent(string word1, string word2) {
+        unordered_map<char,int>map1;
+        unordered_map<char,int>map2;
+
+        for(int i=0;i<word1.length();i++){
+            char ele=word1[i];
+            map1[ele]++;
+        }
+        for(int i=0;i<word2.length();i++){
+            char ele=word2[i];
+            map2[ele]++;
+        }
+        for(auto it:map1){
+            if(abs(it.second-map2[it.first])>3){
+                return false;
+            }
+        }
+        for(auto it:map2){
+            if(abs(it.second-map1[it.first])>3){
+                return false;
+            }
+        }
+        return true;
+        
+    }
+};
