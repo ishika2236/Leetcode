@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int getCommon(vector<int>& nums1, vector<int>& nums2) {
+        unordered_set<int> set1;
+
+        for(int i = 0; i < nums1.size(); i++) {
+            set1.insert(nums1[i]);
+        }
+
+        int minans = -1;  // Initialize to a value not present in the arrays
+        
+        for(int i = 0; i < nums2.size(); i++) {
+            if(set1.count(nums2[i]) > 0) {
+                minans = (minans == -1) ? nums2[i] : min(minans, nums2[i]);
+            }
+        }
+        
+       
+        return minans;
+    }
+};

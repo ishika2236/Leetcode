@@ -1,0 +1,24 @@
+class Solution {
+public:
+    vector<int> findingUsersActiveMinutes(vector<vector<int>>& logs, int k) {
+        unordered_map<int,int>map;
+        set<vector<int>>s;
+        for(auto i:logs){
+            s.insert(i);
+        }
+        vector<vector<int>>temp;
+        for(auto i:s){
+            temp.push_back(i);   
+        }
+
+        for(int i = 0; i < temp.size(); i++) {
+            map[temp[i][0]]++;
+        }
+        vector<int> v(k, 0); 
+
+        for (auto i : map) {
+            v[i.second-1]++; 
+        }
+        return v;
+    }
+};

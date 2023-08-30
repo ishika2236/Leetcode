@@ -1,0 +1,20 @@
+class Solution {
+public:
+    string kthDistinct(vector<string>& arr, int k) {
+        vector<string>temp;
+        for(int i=0;i<arr.size();i++){
+            string ele=arr[i];
+            int countele=count(arr.begin(),arr.end(),ele);
+            if(countele<2){
+                temp.push_back(ele);
+            }
+        }
+        if(k-1<temp.size()){
+            return temp[k-1];
+
+        }
+        return "";
+        
+        
+    }
+};

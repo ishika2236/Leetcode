@@ -1,0 +1,26 @@
+class OrderedStream {
+    vector<string>temp;
+    int ptr;
+public:
+    OrderedStream(int n) {
+        temp.resize(n);
+        ptr=0;
+        
+    }
+    
+    vector<string> insert(int idKey, string value) {
+        temp[idKey-1]=value;
+        vector<string>result;
+        while(ptr<temp.size()&& !temp[ptr].empty()){
+            result.push_back(temp[ptr]);
+            ptr++;
+        }
+        return result;
+    }
+};
+
+/**
+ * Your OrderedStream object will be instantiated and called as such:
+ * OrderedStream* obj = new OrderedStream(n);
+ * vector<string> param_1 = obj->insert(idKey,value);
+ */

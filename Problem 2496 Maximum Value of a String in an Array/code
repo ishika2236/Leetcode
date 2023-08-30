@@ -1,0 +1,34 @@
+class Solution {
+public:
+    int maximumValue(vector<string>& strs) {
+        int max=0;
+        int size=0;
+        bool flag=false;
+        int maxans=INT_MIN;
+        int count=0;
+        for(int i=0;i<strs.size();i++){
+            for(int j=0;j<strs[i].length();j++){
+                char ele=strs[i][j];
+                if((ele>='a' && ele<='z') || (ele>='A' && ele<='Z') ){
+                    flag=true;
+                }
+                
+            }
+            if(!flag){
+                int num=stoi(strs[i]);
+                count=num;
+            }
+            else{
+                count=strs[i].length();
+            }
+            if(count>maxans){
+                maxans=count;
+            }
+            flag=false;
+            
+
+        }
+        return maxans;
+        
+    }
+};

@@ -1,0 +1,35 @@
+class Solution {
+public:
+    int maxSum(vector<int>& nums) {
+        int maxans = -1;
+        
+        for (int i = 0; i < nums.size(); i++) {
+            int ele1 = nums[i];
+            int max1 = INT_MIN;
+
+            
+            while (ele1 > 0) {
+                int digit = ele1 % 10;
+                ele1 = ele1 / 10;
+                max1 = max(max1, digit);
+            }
+            
+            for (int j = i + 1; j < nums.size(); j++) {
+                int ele2 = nums[j];
+                int max2 = INT_MIN;
+
+                
+                while (ele2 > 0) {
+                    int digit = ele2 % 10;
+                    ele2 = ele2 / 10;
+                    max2 = max(max2, digit);
+                }
+
+                if (max1 == max2) {
+                    maxans = max(maxans, nums[i] + nums[j]);
+                }
+            }
+        }
+        return maxans;
+    }
+};
