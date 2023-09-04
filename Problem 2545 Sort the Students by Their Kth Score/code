@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<vector<int>> sortTheStudents(vector<vector<int>>& score, int k) {
+        vector<int>temp;
+        unordered_map<int,vector<int>>mapp;
+
+        for(int i=0;i<score.size();i++){
+            temp.push_back(score[i][k]);
+            vector<int>num;
+            for(int j=0;j<score[i].size();j++){
+                num.push_back(score[i][j]);
+            }
+            mapp[temp[i]]=num;
+        }
+        sort(temp.rbegin(),temp.rend());
+        vector<vector<int>> result;
+        for(int i=0;i<temp.size();i++){
+            result.push_back(mapp[temp[i]]);
+
+        }
+        return result;
+        
+        
+    }
+};

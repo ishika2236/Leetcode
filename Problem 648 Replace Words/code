@@ -1,0 +1,42 @@
+class Solution {
+public:
+    string replaceWords(vector<string>& dictionary, string sentence) {
+        vector<string> s;
+        string temp;
+
+        for (int i = 0; i < sentence.length(); i++) {
+            if (sentence[i] != ' ') {
+                temp += sentence[i];
+            } else {
+                s.push_back(temp);
+                temp = "";
+            }
+        }
+
+        // Handle the last word if there's no space after it
+        if (!temp.empty()) {
+            s.push_back(temp);
+        }
+
+        for (int i = 0; i < s.size(); i++) {
+            string shortestRoot = s[i]; // Initialize with the original word
+
+            for (const string& root : dictionary) {
+                if (s[i].substr(0, root.length()) == root && root.length() < shortestRoot.length()) {
+                    shortestRoot = root;
+                }
+            }
+
+            s[i] = shortestRoot; // Replace the word with the shortest root
+        }
+
+        string result;
+        for (int i = 0; i < s.size(); i++) {
+            result += s[i];
+            if (i != s.size() - 1) {
+                result += ' ';
+            }
+        }
+        return result;
+    }
+};

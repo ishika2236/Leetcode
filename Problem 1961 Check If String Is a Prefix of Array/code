@@ -1,0 +1,17 @@
+class Solution {
+public:
+    bool isPrefixString(string s, vector<string>& words) {
+        string temp;
+        int i=0;
+        while(!words.empty() && temp.length()<s.length()){
+            temp+=words[i];
+            i++;
+            if(i==words.size()){
+                break;
+            }
+            
+        }
+        return temp==s;
+        
+    }
+};

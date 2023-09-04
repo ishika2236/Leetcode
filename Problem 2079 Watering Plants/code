@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int wateringPlants(vector<int>& plants, int capacity) {
+        int temp=capacity;
+        long long count=0;
+        int i=0;
+        while(i<plants.size()){
+            if(capacity>=plants[i]){
+                capacity-=plants[i];
+                plants[i]=0;
+                i++;
+                count++;
+            }
+            else{
+                capacity=temp;
+                count+=i;
+                // count+=i;
+                i=0;
+            }
+        }
+        return count;
+    }
+};

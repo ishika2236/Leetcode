@@ -1,0 +1,28 @@
+class Solution {
+public:
+    string oddString(vector<string>& words) {
+        vector<string>result;
+        map<vector<int>,string>mapp;
+        map<vector<int>,int>map2;
+        for(int i=0;i<words.size();i++){
+            vector<int>temp;
+            // bool flag=true;
+            for(int j=0;j<words[i].length()-1;j++){
+                int ele=words[i][j+1]-words[i][j];
+                temp.push_back(ele);
+                
+            }
+            map2[temp]++;
+            mapp[temp]=words[i];
+            
+
+        }
+        for(auto i:map2){
+            if(i.second==1){
+                return mapp[i.first];
+            }
+        }
+        return "";
+        
+    }
+};
